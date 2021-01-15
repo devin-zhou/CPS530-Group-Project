@@ -29,13 +29,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active" >
-                  <img src="img/img1.bmp" class="d-block w-100 img-fluid" alt="...">
+                  <img src="https://i.imgur.com/FNclzkp.png" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="img/img2.bmp" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://i.imgur.com/xn9KQ1h.png" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="img/img3.bmp" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://i.imgur.com/Ml92Nuq.png" class="d-block w-100 img-fluid" alt="...">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -52,33 +52,23 @@
         <div class="jumbotron text-light" id="backgroundjumobtron">
             <div class="container">
             <h1 class="display-4">Fresh Ingredients</h1>
-            <p class="lead">Our products are made with fresh ingredients purchased from local farmers.</p>
-            <hr class="my-4">
+            <p class="lead">Our products are made with garden-fresh ingredients purchased from local farms.</p>
+            <hr class="my-3">
             <p>We support local farmers and local business during COVID</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <a class="btn btn-primary btn-lg" href="about.html" role="button">Learn more</a>
             </div>
         </div>
     
         <br>
         <!-- Menus -->
         <div class="container-fluid">
-            <h2>Popular Items:</h2>
+            <h2>Popular Items</h2>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 mt-4">
-                    <div class="card text-center">
-                        <img src="https://storage.pizzapizza.ca/phx2/ppl_images/products/en/2x/SCBGT.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Pepperoni</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                card's content.</p>
-                            <a href="#" class="btn btn-dark">Add to cart</a>
-                        </div>
-                    </div>
-                </div>
-    
+                
                 <?php
-                    $connection = new mysqli("localhost", "sdawadi", "Erbyenta", "sdawadi");
+                    // $connection = new mysqli("localhost", "root", "", "menu");
                     //$connection = new mysqli("localhost", "dgzhou", "GejAdkey", "dgzhou");
+                    $connection = new mysqli("localhost", "sdawadi", "Erbyenta", "sdawadi");
                     if ($connection->connect_errno) {
                         printf("Connection Lost");
                         exit(0);
@@ -86,22 +76,23 @@
                     $sql = "SELECT * from menu";
                     $result = $connection->query($sql);
                     if ($result->num_rows > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                    
-                        printf('
-                        <div class="col-lg-4 col-md-4 col-sm-6 mt-4">
-                            <div class="card text-center">
-                                <img src="%s" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">%s</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card\'s content.</p>
-                                    <p class="card-text">$%s</p>
-                                    <a href="#" class="btn btn-dark">Add to cart</a>
+                        $i = 1;
+                        while ($row = mysqli_fetch_assoc($result) and $i < 4) {
+                            
+                            printf('
+                            <div class="col-lg-4 col-md-4 col-sm-6 mt-4">
+                                <div class="card text-center">
+                                    <img src="%s" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">%s</h5>
+                                        <p class="card-text">%s</p>
+                                        <p class="card-text">$%s</p>
+                                        <a href="#" class="btn btn-dark">Add to cart</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>', $row['url'], $row['name'], $row['price']);
-                    }
+                            </div>', $row['url'], $row['desc'], $row['name'], $row['price']);
+                            $i++;
+                        }
                     $result->close(); 
                 } 
                 ?>
@@ -109,9 +100,13 @@
         </div>
 
     </main>
+    
 
+    <!-- footer loaded by nav_footer.js -->
     <div id="footer"></div>
+    <!-- the script the load the nav and footer above. -->
     <script src="nav_footer.js"></script>
+    
  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

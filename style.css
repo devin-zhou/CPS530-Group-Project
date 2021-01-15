@@ -57,6 +57,13 @@ footer {
         margin-left: auto !important;
         margin-right: auto !important; 
     }
+    .address {
+        font-size: 23px;
+        text-align: center;
+        font-weight: 600;
+        margin-left: auto !important;
+        margin-right: auto !important; 
+    }
   }
 
 #pizza-header {
@@ -83,6 +90,14 @@ footer {
 }
 
 h4 {
-    color: #ff6978;
+    color: #E6001B;
     font-weight: 600;
+}
+
+td {
+    text-align: center;
+}
+
+.link {
+    color: #898989;
 }
